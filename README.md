@@ -1,2 +1,0 @@
-# SYMBITECH
-website for symbitech
