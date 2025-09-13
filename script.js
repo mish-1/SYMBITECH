@@ -7,7 +7,7 @@
 
   if(!dayEl || !hourEl || !minEl || !secEl) return;
 
-  const target = new Date('2025-10-25T00:00:00');
+  const target = new Date('2025-09-19T00:00:00');
 
   function pad(n){ return String(n).padStart(2,'0'); }
 
@@ -28,5 +28,3 @@
   tick();
   setInterval(tick, 1000);
 })();
-
-

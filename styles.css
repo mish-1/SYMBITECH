@@ -10,7 +10,10 @@
   --border:rgba(255,255,255,0.12);
 }
 
-*{box-sizing:border-box}
+*, ::before, ::after {
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
 html,body{height:100%}
 body{
   margin:0;
@@ -90,13 +93,123 @@ body{
 .about-art{ margin-top:12px }
 .about-image{ width:100%; border-radius:8px; display:block }
 
+/* Past Glimpse Section */
+.past-glimpse-section {
+  position: relative;
+  padding: 80px 24px;
+  background: linear-gradient(180deg, #0a0a0d 0%, #301015 50%, #0a0a0f 100%);
+  min-height: 100vh; /* Make section occupy full viewport height */
+  display: flex; /* Use flexbox for vertical centering */
+  align-items: center;
+}
 
+.past-glimpse-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+  align-items: center;
+}
 
+.glimpse-text {
+  text-align: left; /* Align text to the left */
+}
+
+.glimpse-text h2 {
+  font-family: Orbitron, Inter, sans-serif;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.glimpse-images {
+  display: grid; /* Use grid for even spacing */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px; /* Increased gap for spacing */
+}
+
+.glimpse-box {
+  background-color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  min-height: 70vh; /* Set a minimum height of 70% of viewport height */
+}
+
+/* Sponsors Section */
+.sponsors{position:relative;margin-top:0;padding:60px 24px;min-height:100vh;background:linear-gradient(to bottom,#3b0000 0%,#0e0a0a 70%);display:flex;align-items:center}
+.sponsors-inner{max-width:1200px;margin:0 auto;width:100%}
+.sponsors-title{font-family:Orbitron,Inter,sans-serif;font-size:56px;text-transform:uppercase;text-align:center;color:#fff;margin:0 0 40px 0;letter-spacing:3px;text-shadow:0 0 8px #4a9eff}
+.sponsors-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:16px;max-width:1000px;margin:0 auto;padding:20px;background:rgba(255,255,255,0.02);border:1px solid #333;border-radius:12px;box-shadow:0 0 20px rgba(74,158,255,0.2)}
+.sponsor-box{aspect-ratio:1;min-height:140px;display:flex;align-items:center;justify-content:center;background:#1e1e1e;border:1px solid #333;border-radius:10px;transition:all .3s ease}
+.sponsor-box:hover{background:#111;border-color:#4a9eff;transform:translateY(-6px);box-shadow:0 6px 20px rgba(74,158,255,0.4)}
+
+/* Contact Section */
+.contact {
+  position: relative;
+  margin-top: 0;
+  padding: 40px 24px;
+  min-height: 30vh;
+  background: linear-gradient(to bottom,#3b0000 0%,#0e0a0a 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contact-box {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.contact-title {
+  font-family: Orbitron, Inter, sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.contact-email {
+  font-family: Orbitron, Inter, sans-serif;
+  font-size: 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.2);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.contact-email:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-2);
+}
+
+.copyright {
+  color: #bbb;
+  font-size: 14px;
+  margin-top: 32px;
+  text-align: center;
+  letter-spacing: 1px;
+}
 
 /* Responsive */
-@media (min-width: 860px){
-  .about-inner{ grid-template-columns: 0.65fr 0.35fr; align-items:start; gap:24px }
-}
+/* Mobile (up to 720px) */
 @media (max-width: 720px){
   .primary-nav{ gap:12px }
   .primary-nav a{ font-size:11px }
@@ -104,6 +217,46 @@ body{
   .hero-car{ max-width:100% }
   .theme-section{ grid-template-columns:1fr; }
   .theme-aside{ order:2 }
+  .contact-title{ font-size: 2rem; }
+  .contact-email { font-size: 1.25rem; }
+  .past-glimpse-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+  .glimpse-images {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
+/* Tablet portrait / small laptops (721px – 1024px) */
+@media (max-width: 1024px){
+  .sponsors-title{ font-size:44px }
+  .sponsors-grid{ grid-template-columns:repeat(2,1fr); grid-template-rows:auto; gap:18px }
+  .sponsor-box{ min-height:120px }
+}
 
+/* Tablets landscape / medium laptops (1025px – 1280px) */
+@media (max-width: 1280px){
+  .sponsors-title{ font-size:50px }
+  .sponsors-grid{ grid-template-columns:repeat(3,1fr); grid-template-rows:auto; gap:20px }
+  .sponsor-box{ min-height:140px }
+}
+
+/* Large laptops and desktops (default above 1280px)
+   - no media query needed since your base CSS already handles 3x2 layout */
+
+/* About section adjustment */
+@media (min-width: 860px){
+  .about-inner{ grid-template-columns:0.65fr 0.35fr; align-items:start; gap:24px }
+}
+
+/* Extra small mobile (up to 480px) */
+@media (max-width: 480px){
+  .sponsors-title{ font-size:28px }
+  .sponsors-grid{ grid-template-columns:1fr; grid-template-rows:auto; gap:14px }
+  .sponsor-box{ min-height:90px }
+  .contact-title { font-size: 1.5rem; }
+  .contact-email { font-size: 1rem; }
+}
