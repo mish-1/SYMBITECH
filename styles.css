@@ -260,3 +260,364 @@ body{
   .contact-title { font-size: 1.5rem; }
   .contact-email { font-size: 1rem; }
 }
+
+/*events page styles*/
+/* Events page scoped styles */
+.events-page {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #120000, #2a0000, #000000);
+  color: white;
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.events-page .sidebar {
+  width: 280px;
+  background: rgba(20,0,0,0.85);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  overflow-y: auto;
+}
+
+.events-page .back-btn {
+  background: rgba(255,255,255,0.06);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.events-page .search-box {
+  margin-bottom: 14px;
+}
+.events-page .search-box input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+/* Filters */
+.events-page h3 {
+  margin: 12px 0 8px;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-bottom: 6px;
+}
+
+.events-page .filter-item {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  gap: 8px;
+}
+.events-page .filter-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.events-page .filter-item label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Content area */
+.events-page .content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px;
+}
+
+/* Event Card */
+.event-card {
+  display: flex;
+  gap: 22px;
+  align-items: stretch;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color .18s, transform .12s;
+}
+.event-card:hover {
+  border-color: rgba(0,200,200,0.6);
+  transform: translateY(-3px);
+}
+
+.event-info {
+  flex: 2;
+}
+.event-info h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+.event-info p {
+  margin: 3px 0;
+}
+.event-desc {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.04);
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+}
+
+.event-image {
+  flex: 1;
+  min-width: 160px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e9e9e9, #f7cfcf);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4) inset;
+}
+
+/* No results */
+.no-events {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  padding: 30px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.25);
+}
+
+/* Event Details Page */
+.event-details-page {
+  background: linear-gradient(135deg, #120000, #2a0000, #000000);
+  color: white;
+  padding: 40px;
+  font-family: Inter, sans-serif;
+}
+
+.back-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Shared */
+.event-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 32px;
+  display: grid;
+  gap: 20px;
+}
+
+.event-layout h1 {
+  font-size: 2.4rem;
+  margin: 0;
+}
+
+.event-layout h3 {
+  font-size: 1.2rem;
+  margin-top: 4px;
+  color: #ccc;
+}
+
+/* Competition / Workshop Layout */
+.competition-layout, .workshop-layout {
+  grid-template-areas:
+    "title title logo"
+    "graphic description description"
+    "venue contact team";
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+}
+
+.competition-layout h1,
+.workshop-layout h1 { grid-area: title; }
+.competition-layout h3,
+.workshop-layout h3 { grid-area: logo; justify-self: end; }
+
+.event-graphic {
+  grid-area: graphic;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-description {
+  grid-area: description;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 0.95rem;
+}
+
+.event-meta {
+  display: contents; /* allows direct placement in grid areas */
+}
+.event-meta .venue { grid-area: venue; }
+.event-meta .contact { grid-area: contact; }
+.event-meta .team { grid-area: team; }
+
+.event-meta div {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Lecture Layout */
+.lecture-layout {
+  grid-template-areas:
+    "title title photo"
+    "about description photo"
+    "venue contact register";
+  grid-template-columns: 1fr 1fr 0.8fr;
+}
+
+.lecture-layout h1 { grid-area: title; }
+.lecture-layout h3 { grid-area: title; margin-top: 40px; }
+
+.lecturer-photo {
+  grid-area: photo;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-about { 
+  grid-area: about; 
+  background: rgba(255,255,255,0.05);
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.event-description { 
+  grid-area: description; 
+}
+
+.event-meta .venue { grid-area: venue; }
+.event-meta .contact { grid-area: contact; }
+
+.register-btn {
+  grid-area: register;
+  align-self: end;
+  padding: 12px 24px;
+  background: #ff2345;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+.register-btn:hover { background: #ff445f; }
+
+
+
+/* Team Page */
+.team-page {
+  background: linear-gradient(135deg, #0a0a0d, #1a0000, #000);
+  color: white;
+  font-family: Inter, sans-serif;
+  padding: 40px 24px;
+}
+
+.team-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.team-header h1 {
+  font-family: Orbitron, sans-serif;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.team-header .back-btn {
+  position: absolute;
+  left: 0;
+}
+
+.section-title {
+  font-family: Orbitron, sans-serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 8px;
+}
+
+.sub-section-title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin: 24px 0 16px;
+  font-weight: 600;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.member-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
+}
+
+.team-member h3 {
+  font-size: 1rem;
+  margin: 6px 0 2px;
+}
+
+.team-member p {
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+/* Hover effects for team members */
+.team-member {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.member-photo {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+}
+
+.team-member:hover .member-photo {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 50, 70, 0.6);
+  border: 1px solid rgba(255, 50, 70, 0.8);
+}
