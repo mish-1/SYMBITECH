@@ -1,47 +1,54 @@
 // =========================
-// Countdown (only on home)
+// Homepage countdown (only on index.html)
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
+  if (!document.body.classList.contains("home-page")) return;
+
   const dd = document.getElementById("dd");
   const hh = document.getElementById("hh");
   const mm = document.getElementById("mm");
   const ss = document.getElementById("ss");
 
-  // Only run if all countdown elements exist
-  if (dd && hh && mm && ss) {
-    const eventDate = new Date("2025-09-19T00:00:00");
+  if (!dd || !hh || !mm || !ss) {
+    console.warn("Countdown elements not found on page");
+    return;
+  }
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = eventDate - now;
+  const eventDate = new Date(2025, 8, 19, 0, 0, 0); // 19 Sept 2025
 
-      if (diff <= 0) {
-        dd.textContent = "00";
-        hh.textContent = "00";
-        mm.textContent = "00";
-        ss.textContent = "00";
-        return;
-      }
+  function updateCountdown() {
+    const now = new Date();
+    const diff = eventDate.getTime() - now.getTime();
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      dd.textContent = String(days).padStart(2, "0");
-      hh.textContent = String(hours).padStart(2, "0");
-      mm.textContent = String(minutes).padStart(2, "0");
-      ss.textContent = String(seconds).padStart(2, "0");
+    if (diff <= 0) {
+      dd.textContent = "00";
+      hh.textContent = "00";
+      mm.textContent = "00";
+      ss.textContent = "00";
+      clearInterval(countdownInterval);
+      return;
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    dd.textContent = String(days).padStart(2, "0");
+    hh.textContent = String(hours).padStart(2, "0");
+    mm.textContent = String(minutes).padStart(2, "0");
+    ss.textContent = String(seconds).padStart(2, "0");
   }
+
+  const countdownInterval = setInterval(updateCountdown, 1000);
+  updateCountdown();
 });
 
 
+
+
 // =========================
-// Events filtering (only on events.html)
+// Events filtering & clicks (only on events.html)
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
   if (!document.body.classList.contains("events-page")) return;
@@ -83,17 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const matchSearch = search === "" || cardText.includes(search);
 
       if (matchType && matchClub && matchSearch) {
-        card.style.display = "flex";
+        card.style.display = "flex"; // keep visible
         visibleCount++;
       } else {
-        card.style.display = "none";
+        card.style.display = "none"; // hide
       }
     });
 
     noEventsMsg.style.display = visibleCount === 0 ? "block" : "none";
   }
 
-  // Listeners
+  // Filter listeners
   document.querySelector(".sidebar")?.addEventListener("change", e => {
     if (e.target.matches(".filter-type, .filter-club")) {
       filterEvents();
@@ -101,6 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   searchBox.addEventListener("input", filterEvents);
+
+  // Click handling (event delegation)
+  container.addEventListener("click", e => {
+    const card = e.target.closest(".event-card");
+    if (card && container.contains(card) && card.style.display !== "none") {
+      const id = card.dataset.id;
+      if (id) {
+        window.location.href = `event-details.html?id=${id}`;
+      }
+    }
+  });
 
   // Initial filter run
   filterEvents();
@@ -117,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Parse query params
   const params = new URLSearchParams(window.location.search);
-  const type = params.get("type");
   const id = params.get("id");
 
   // Event Data
