@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Events Filter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="events-page">
+  <div class="sidebar">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+
+    <div class="search-box">
+      <input id="search" type="text" placeholder="Search Events" />
+    </div>
+
+    <h3>By Type</h3>
+    <div class="filter-item">
+      <input type="checkbox" value="Competitions" class="filter-type" id="type-competitions">
+      <label for="type-competitions">Competitions</label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" value="Guest Lectures" class="filter-type" id="type-guest">
+      <label for="type-guest">Guest Lectures</label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" value="Workshops" class="filter-type" id="type-workshops">
+      <label for="type-workshops">Workshops</label>
+    </div>
+
+    <h3>By Club / Society</h3>
+    <div class="filter-item">
+      <input type="checkbox" value="Codex" class="filter-club" id="club-codex">
+      <label for="club-codex">Codex</label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" value="Google Developers Student Club" class="filter-club" id="club-gds">
+      <label for="club-gds">Google Developers Student Club</label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" value="Varsity Care" class="filter-club" id="club-varsity">
+      <label for="club-varsity">Varsity Care</label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" value="Antriksh Club" class="filter-club" id="club-antriksh">
+      <label for="club-antriksh">Antriksh Club</label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" value="Cyber Blockchain Club" class="filter-club" id="club-cyber">
+      <label for="club-cyber">Cyber Blockchain Club</label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" value="ACM Student Chapter" class="filter-club" id="club-acm">
+      <label for="club-acm">ACM Student Chapter</label>
+    </div>
+  </div>
+
+  <div class="content">
+    <div id="events-container">
+      <!-- Existing Events -->
+      <div class="event-card" data-type="Competitions" data-club="Google Developers Student Club">
+        <a href="event-details.html?type=competition&id=2fast2hack" class="card-link">
+          <div class="event-info">
+            <h2>2FAST2HACK</h2>
+            <p><strong>Google Developers Student Club</strong></p>
+            <p>Hackathon for budding developers</p>
+            <div class="event-desc">Compete in teams to build innovative solutions in 24 hours.</div>
+          </div>
+          <div class="event-image"></div>
+        </a>
+      </div>
+
+      <div class="event-card" data-type="Competitions" data-club="Codex">
+        <a href="event-details.html?type=competition&id=code-sprint" class="card-link">
+          <div class="event-info">
+            <h2>Code Sprint</h2>
+            <p><strong>Codex</strong></p>
+            <p>Fast-paced coding challenge</p>
+            <div class="event-desc">Solve algorithmic problems under time pressure.</div>
+          </div>
+          <div class="event-image"></div>
+        </a>
+      </div>
+
+      <div class="event-card" data-type="Workshops" data-club="Cyber Blockchain Club">
+        <a href="event-details.html?type=workshop&id=blockchain-101" class="card-link">
+          <div class="event-info">
+            <h2>Blockchain 101</h2>
+            <p><strong>Cyber Blockchain Club</strong></p>
+            <p>Learn the basics of blockchain</p>
+            <div class="event-desc">Introductory workshop covering concepts & hands-on exercises.</div>
+          </div>
+          <div class="event-image"></div>
+        </a>
+      </div>
+
+      <div class="event-card" data-type="Guest Lectures" data-club="Antriksh Club">
+        <a href="event-details.html?type=lecture&id=space-talk" class="card-link">
+          <div class="event-info">
+            <h2>Space Talk</h2>
+            <p><strong>Antriksh Club</strong></p>
+            <p>Exploring the universe</p>
+            <div class="event-desc">Guest lecture by an ISRO scientist about space exploration.</div>
+          </div>
+          <div class="event-image"></div>
+        </a>
+      </div>
+
+      <!-- NEW Events -->
+      <div class="event-card" data-type="Competitions" data-club="ACM Student Chapter">
+        <a href="event-details.html?type=competition&id=acm-hacknight" class="card-link">
+          <div class="event-info">
+            <h2>HackNight</h2>
+            <p><strong>ACM Student Chapter</strong></p>
+            <p>Overnight coding marathon</p>
+            <div class="event-desc">An overnight coding marathon solving real-world challenges.</div>
+          </div>
+          <div class="event-image"></div>
+        </a>
+      </div>
+
+      <div class="event-card" data-type="Workshops" data-club="Varsity Care">
+        <a href="event-details.html?type=workshop&id=varsity-care-ai" class="card-link">
+          <div class="event-info">
+            <h2>AI for Healthcare</h2>
+            <p><strong>Varsity Care</strong></p>
+            <p>Workshop on AI in medicine</p>
+            <div class="event-desc">Exploring applications of AI in medical diagnostics.</div>
+          </div>
+          <div class="event-image"></div>
+        </a>
+      </div>
+
+      <!-- "no-events" placeholder will be appended by JS -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
