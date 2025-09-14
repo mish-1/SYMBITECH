@@ -44,8 +44,21 @@ body{
 }
 
 .brand-badge{
-  position:relative; z-index:2; margin-top:4px;
-  display:inline-block; padding:16px 18px; font-size:14px; color:#111; background:#dedede; border-radius:2px; min-width:150px; text-align:center;
+  position:relative; z-index:2; margin-top:10px;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background:transparent;
+  border-radius:6px;
+  text-align:center;
+  overflow: hidden;
+}
+
+.brand-badge img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 .btn{ padding:8px 14px; border:1px solid var(--border); border-radius:8px }
